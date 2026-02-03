@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Vaishnavi ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  color: white;
+}
+
+.container {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 35px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.letter {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 20px 0;
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff5e8e;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.hidden {
+  display: none;
+  margin-top: 20px;
+  animation: fadeIn 1.5s ease;
+}
+
+/* Floating elements */
+.heart, .petal {
+  position: fixed;
+  bottom: -10px;
+  animation: floatUp linear infinite;
+  opacity: 0.9;
+}
+
+.heart { font-size: 20px; }
+.petal { font-size: 18px; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  width: 85%;
+  max-width: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  animation: zoomIn 0.6s ease;
+}
+
+.modal img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  animation: imageFade 2.5s ease-in-out infinite;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes imageFade {
+  0% { opacity: 0; transform: scale(1.05); }
+  20% { opacity: 1; transform: scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_20c9c9df9f.mp3">
+</audio>
+
+<div class="container">
+  <h1>Vaishnavi ❤️</h1>
+  <h2>Happy Valentine’s Day, my bonda</h2>
+
+  <div class="letter">
+    My dearest bonda,<br><br>
+    You’re my favorite feeling,
+    my safest place,
+    and the most beautiful chapter of my life.<br><br>
+    Everything feels better when it’s with you.
+  </div>
+
+  <button onclick="openModal()">Tap for a surprise 💖</button>
+
+  <!-- <button onclick="openModal()">Our Memories 💞</button> -->
+
+  <button onclick="askValentine()">Will you be my Valentine? 💘</button>
+  <div class="hidden" id="answer">
+    Well!! My answer is always YES 💕 Forever your bonda’s person.
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <div class="modal-content">
+    <img id="slide" src="pic1.jpeg">
+  </div>
+</div>
+
+<script>
+const images = ["pic1.jpeg", "pic2.jpeg", "pic3.jpeg"];
+let index = 0;
+let slideshow;
+
+function openModal() {
+  document.getElementById("modal").style.display = "flex";
+  slideshow = setInterval(() => {
+    index = (index + 1) % images.length;
+    document.getElementById("slide").src = images[index];
+  }, 2500);
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+  clearInterval(slideshow);
+}
+
+// function showSurprise() {
+//   document.getElementById("surprise").style.display = "block";
+// }
+
+function askValentine() {
+  document.getElementById("answer").style.display = "block";
+}
+
+function createFloating(icon, className) {
+  const el = document.createElement("div");
+  el.className = className;
+  el.innerHTML = icon;
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.animationDuration = (Math.random() * 3 + 4) + "s";
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 7000);
+}
+
+setInterval(() => createFloating("❤️", "heart"), 300);
+setInterval(() => createFloating("🌹", "petal"), 600);
+</script>
+
+</body>
+</html>
