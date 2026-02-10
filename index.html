@@ -153,16 +153,18 @@ button:hover {
     You’re my favorite feeling,
     my safest place,
     and the most beautiful chapter of my life.<br><br>
-    Everything feels hottest when it’s with you.
+    Everything feels hotter when it’s with you.
   </div>
 
   <button onclick="openModal()">Tap for a surprise 💖</button>
 
   <!-- <button onclick="openModal()">Our Memories 💞</button> -->
 
-  <button onclick="askValentine()">Will you be my Valentine? 💘</button>
+  <button onclick="askValentine()">Will you be my Valentine? Select from the below options... 💘</button>
   <div class="hidden" id="answer">
-    Well!! My answer is always YES 💕 Forever your bonda’s person.
+    <div><button onclick="teaseher()">Yesssss!!!!</button></div>
+    <div id="tease" style="display: none;">Naku telusu leee... Well!! My answer is always YES 💕 Forever your bonda’s person.</div>
+    <!-- Well!! My answer is always YES 💕 Forever your bonda’s person. -->
   </div>
 </div>
 
@@ -199,6 +201,10 @@ function askValentine() {
   document.getElementById("answer").style.display = "block";
 }
 
+function teaseher() {
+  document.getElementById("tease").style.display="block";
+}
+
 function createFloating(icon, className) {
   const el = document.createElement("div");
   el.className = className;
@@ -215,4 +221,3 @@ setInterval(() => createFloating("🌹", "petal"), 600);
 
 </body>
 </html>
-
